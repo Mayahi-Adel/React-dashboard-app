@@ -1,12 +1,15 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {promoService} from '../../services';
 import authContext from '../../store';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import './dashboard.scss';
 
 const Dashboard = (props) => {
     const [promos, setPromos] = useState([]);
     const [error, setError] = useState(false);
     const authStore = useContext(authContext);
-    console.log(authStore);
+    //console.log(authStore);
 
     useEffect (async () => {
         try{
@@ -22,10 +25,15 @@ const Dashboard = (props) => {
         setPromos(promoUpdated);
     }
 
+    const addPromo = () => {
+        props.history.push("/add_promo");
+    }
+
     const listing_promo = promos.map((promo, i) => {
         return (
-            <div key={i} onClick={(e) => removePromo(promo.id)}>
+            <div key={i} className="promo__list">
                 <h6>{promo.name}</h6>
+                <DeleteForeverIcon onClick={(e) => removePromo(promo.id)}/>
             </div>
         )
     })
@@ -34,6 +42,7 @@ const Dashboard = (props) => {
         <>
             {error && <p>Erreur serveur</p>}
             <h1>Welcome</h1>
+            <AddCircleIcon onClick={(e) => addPromo()} />
             {listing_promo}
         </>
     )

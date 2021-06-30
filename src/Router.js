@@ -1,14 +1,15 @@
 import { Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import Apprenants from './pages/Apprenants';
+import AddPromo from './pages/Promos';
 
 const AppRouter = () => {
     return (
         <Switch>
             <Route exact path='/' component={Login} />
             <Route exact path='/dashboard' component={Dashboard} />
-            <Route exact path='/apprenants' component={Apprenants} />
+            <Route exact path='/add_promo' component={AddPromo} />
+            
         </Switch>
     )
 }

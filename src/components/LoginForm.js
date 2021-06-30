@@ -11,7 +11,7 @@ const LoginForm = (props) => {
     const [error, setError] = useState(null);
     const authStore = useContext(authContext);
 
-    console.log(authStore);
+    //console.log(authStore);
 
     const handleClick = async (e) => {
         console.log(username, password);
