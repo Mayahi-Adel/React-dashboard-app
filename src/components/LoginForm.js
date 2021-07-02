@@ -11,7 +11,7 @@ const LoginForm = (props) => {
     const [error, setError] = useState(null);
     const authStore = useContext(authContext);
 
-    console.log(authStore);
+    //console.log(authStore);
 
     const handleClick = async (e) => {
         console.log(username, password);
@@ -23,7 +23,7 @@ const LoginForm = (props) => {
             props.history.push("/dashboard");
 
         } catch (error) {
-
+            setError(true)
         }
 
     }
@@ -32,6 +32,7 @@ const LoginForm = (props) => {
     
     return (
         <div>
+            {error && <p>erreur serveur</p>}
             <div>
                 <div className={`wrapper ${classes.loginForm}`}>
                     <TextField
