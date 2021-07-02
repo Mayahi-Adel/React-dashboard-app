@@ -1,8 +1,12 @@
 import React, {useState, useContext} from 'react';
 import { Button, TextField } from '@material-ui/core';
+
+import Alert from '@material-ui/lab/Alert';
+
 import useStyles from '../theme/forms.css';
 import authContext from '../store';
 import {login} from '../services';
+
 
 const LoginForm = (props) => {
 
@@ -23,7 +27,8 @@ const LoginForm = (props) => {
             props.history.push("/dashboard");
 
         } catch (error) {
-            setError(true)
+            setError(error.response.data.message)
+            //const errorMsg = error.response.data.message;
         }
 
     }
@@ -32,7 +37,8 @@ const LoginForm = (props) => {
     
     return (
         <div>
-            {error && <p>erreur serveur</p>}
+            {error && <Alert severity="error">{error}</Alert>}
+            
             <div>
                 <div className={`wrapper ${classes.loginForm}`}>
                     <TextField

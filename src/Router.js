@@ -1,26 +1,41 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import {AddPromo, DetailsPromo} from './pages/Promos';
 import {Apprenants, AddApprenant, DetailsApprenant} from './pages/Apprenants';
+import React from 'react';
+import appContext from './store';
+
+const PrivateRoute = ({component : Component, ...rest}) => {
+    const store = React.useContext(appContext);
+    return (
+        <Route {...rest} render={(props) => (
+            store.isAuth
+            ? <Component {...props} />
+            : <Redirect to='/' />
+        )} />
+    )
+}
 
 const AppRouter = () => {
     return (
         <Switch>
             <Route exact path='/' component={Login} />
-            <Route exact path='/dashboard' component={Dashboard} />
-            <Route exact path='/add_promo' component={AddPromo} />
-            <Route exact path='/details_promo/:id' component={DetailsPromo} />
-            <Route exact path='/apprenants' component={Apprenants} />
-            <Route exact path='/add_apprenant' component={AddApprenant} />
-            <Route exact path='/apprenants/:id' component={DetailsApprenant} />
+            <PrivateRoute exact path='/dashboard' component={Dashboard} />
+            <PrivateRoute exact path='/add_promo' component={AddPromo} />
+            <PrivateRoute exact path='/details_promo/:id' component={DetailsPromo} />
+            <PrivateRoute exact path='/apprenants' component={Apprenants} />
+            <PrivateRoute exact path='/add_apprenant' component={AddApprenant} />
+            <PrivateRoute exact path='/apprenants/:id' component={DetailsApprenant} />
+
+            <Route exact path='*' component={Login} />
         </Switch>
     )
 }
 
 // TODO ->
 
-// const PrivateRoute = () => {}
+ 
 
 // const PublicRoute = () => {}
 
