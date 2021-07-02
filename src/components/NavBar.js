@@ -18,8 +18,11 @@ import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import { Link, withRouter } from "react-router-dom";
 import appContext from '../store';
+import useStyles from '../theme/partials.css';
 
 const NavBar = (props) => {
+
+    const classes = useStyles();
 
     const store = React.useContext(appContext);
 
@@ -36,6 +39,7 @@ const NavBar = (props) => {
         props.history.push('/');
         toggleDrawer();
     }
+
 
     return (
         <div>
@@ -59,43 +63,43 @@ const NavBar = (props) => {
             >
                 <List>
                     <ListItem>
-                        <Link to="/">
-                            <Button color="secondary" onClick={logout}>
+                        <Link to="/" className={classes.margin}>
+                            <Button variant="contained" color="secondary" onClick={logout} className={classes.button}>
                                 <ExitToAppIcon /> Logout
                             </Button>
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link to="/dashboard">
-                            <Button color="primary" onClick={toggleDrawer}>
+                        <Link to="/dashboard" className={classes.margin}>
+                            <Button variant="contained" color="primary" onClick={toggleDrawer} className={classes.button}>
                                 <DashboardIcon /> Dashboard
                             </Button>
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link to="/dashboard">
-                            <Button color="primary" onClick={toggleDrawer}>
+                        <Link to="/promos" className={classes.margin}>
+                            <Button variant="contained" color="primary" onClick={toggleDrawer} className={classes.button}>
                                 <GroupWorkIcon /> Promos
                             </Button>
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link to="/Apprenants">
-                            <Button color="primary" onClick={toggleDrawer}>
+                        <Link to="/Apprenants" className={classes.margin}>
+                            <Button variant="contained" color="primary" onClick={toggleDrawer} className={classes.button}>
                                 <PeopleAltIcon /> Apprenants
                             </Button>
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link to="/formateurs">
-                            <Button color="primary" onClick={toggleDrawer}>
+                        <Link to="/formateurs" className={classes.margin}>
+                            <Button variant="contained" color="primary" onClick={toggleDrawer} className={classes.button}>
                                 <SupervisorAccountIcon /> Formateurs
                             </Button>
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link to="/salles">
-                            <Button color="primary" onClick={toggleDrawer}>
+                        <Link to="/salles" className={classes.margin}>
+                            <Button variant="contained" color="primary" onClick={toggleDrawer} className={classes.button} >
                                 <MeetingRoomIcon /> Salles
                             </Button>
                         </Link>

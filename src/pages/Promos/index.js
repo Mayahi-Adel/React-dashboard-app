@@ -1,6 +1,6 @@
 import AddPromo from './AddPromo';
 import DetailsPromo from './DetailsPromo';
+import Promos from './Promos';
 
 
-
-export  {AddPromo, DetailsPromo};
+export  {Promos, AddPromo, DetailsPromo};
