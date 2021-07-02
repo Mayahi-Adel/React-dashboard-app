@@ -1,6 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react';
 import authContext from '../../store';
 import { apprenantService } from '../../services';
+import useStyles from '../../theme/partials.css';
 
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Dialog from '@material-ui/core/Dialog';
@@ -9,6 +10,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
+import { CallMissedSharp } from '@material-ui/icons';
 
 const DetailsApprenant = (props) => {
 
@@ -17,6 +19,8 @@ const DetailsApprenant = (props) => {
     const [error, setError] = useState(false);
     const [open, setOpen] = useState(false)
     const authStore = useContext(authContext);
+
+    const classes = useStyles();
 
     useEffect(async () => {
         const id = props.match.params.id;
@@ -53,9 +57,9 @@ const DetailsApprenant = (props) => {
     }
 
     return (
-        <>
+        <div className={classes.container}>
             {!loading && 
-                <div>
+                <div className={classes.container__list}>
                     {error && <p>Erreur serveur</p>}
                     <h4>{apprenant.firstname} {apprenant.lastname}</h4>
                     <h5>Promo : {apprenant.promo.name}</h5>
@@ -84,7 +88,7 @@ const DetailsApprenant = (props) => {
                 </div>
             }
 
-        </>
+        </div>
     )
 }
 

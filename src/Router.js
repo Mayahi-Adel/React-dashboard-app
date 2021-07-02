@@ -1,7 +1,7 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import {AddPromo, DetailsPromo} from './pages/Promos';
+import {Promos, AddPromo, DetailsPromo} from './pages/Promos';
 import {Apprenants, AddApprenant, DetailsApprenant} from './pages/Apprenants';
 import React from 'react';
 import appContext from './store';
@@ -22,6 +22,7 @@ const AppRouter = () => {
         <Switch>
             <Route exact path='/' component={Login} />
             <PrivateRoute exact path='/dashboard' component={Dashboard} />
+            <PrivateRoute exact path='/promos' component={Promos} />
             <PrivateRoute exact path='/add_promo' component={AddPromo} />
             <PrivateRoute exact path='/details_promo/:id' component={DetailsPromo} />
             <PrivateRoute exact path='/apprenants' component={Apprenants} />
