@@ -16,7 +16,7 @@ const AddPromo = (props) => {
             props.history.push('/dashboard');
 
         } catch (error) {
-
+            setError(true)
         }
     }
     
@@ -25,6 +25,7 @@ const AddPromo = (props) => {
     return (
         
         <div>
+        {error && <p>Erreur serveur</p>}
             <div>
                 <div className={`wrapper ${classes.loginForm}`}>
                     <TextField

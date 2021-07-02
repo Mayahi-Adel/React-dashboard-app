@@ -29,10 +29,14 @@ const Dashboard = (props) => {
         props.history.push("/add_promo");
     }
 
+    const detailsPromo = (id) => {
+        props.history.push("/details_promo/"+ id)
+    }
+
     const listing_promo = promos.map((promo, i) => {
         return (
             <div key={i} className="promo__list">
-                <h6>{promo.name}</h6>
+                <h4 onClick={(e) => detailsPromo(promo.id)}>{promo.name}</h4>
                 <DeleteForeverIcon onClick={(e) => removePromo(promo.id)}/>
             </div>
         )

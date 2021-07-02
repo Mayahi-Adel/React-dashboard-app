@@ -80,7 +80,7 @@ class NavBar extends React.Component {
                             </Link>
                         </ListItem>
                         <ListItem>
-                            <Link to="/Apprenats">
+                            <Link to="/Apprenants">
                                 <Button color="primary" onClick={this.toggleDrawer}>
                                     <PeopleAltIcon /> Apprenants
                                 </Button>

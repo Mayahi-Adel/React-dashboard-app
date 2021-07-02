@@ -1,3 +1,6 @@
 import Apprenants from './Apprenants';
+import AddApprenant from './AddApprenant'
+import DetailsApprenant from './DetailsApprenant';
 
-export default Apprenants;
+
+export {Apprenants, AddApprenant, DetailsApprenant};

@@ -1,3 +1,6 @@
 import AddPromo from './AddPromo';
+import DetailsPromo from './DetailsPromo';
 
-export default AddPromo;
+
+
+export  {AddPromo, DetailsPromo};
