@@ -32,11 +32,25 @@ const DetailsApprenant = (props) => {
 
     const handleClickOpen = () => {
         setOpen(true);
-      };
+    };
     
-      const handleClose = () => {
+    const handleClose = () => {
         setOpen(false);
-      };
+    };
+
+    const removeApprenant = async (id) => {
+
+        setOpen(false);
+
+        try {
+            const response = await apprenantService.removeOne(id);
+            props.history.push('/apprenants')
+            // penser à ajouter un message de confirmation de suppression !
+
+        } catch (error) {
+            setError(true)
+        }
+    }
 
     return (
         <>
@@ -62,7 +76,7 @@ const DetailsApprenant = (props) => {
                         <Button onClick={handleClose} color="primary">
                             Annuler
                         </Button>
-                        <Button onClick={handleClose} color="primary" autoFocus>
+                        <Button onClick={(e) => removeApprenant(apprenant.id)} color="primary" autoFocus>
                             Supprimer
                         </Button>
                         </DialogActions>
